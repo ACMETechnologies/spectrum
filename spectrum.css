@@ -311,9 +311,17 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
     border-left: solid 1px #fff;
 }
 
+.sp-picker-container .sp-picker-heading {
+    text-align: left;
+}
+
 /* Palettes */
 .sp-palette-container {
     border-right: solid 1px #ccc;
+}
+
+.sp-palette-container .sp-palette-heading {
+    text-align: left;
 }
 
 .sp-palette-only .sp-palette-container {

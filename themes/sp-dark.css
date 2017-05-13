@@ -53,10 +53,16 @@
 .sp-dark .sp-picker-container {
 
 }
+.sp-dark .sp-picker-container .sp-picker-heading {
 
+}
 /* Palettes */
 .sp-dark .sp-palette-container {
 
+}
+
+.sp-dark .sp-palette-container .sp-palette-heading {
+    
 }
 
 .sp-dark .sp-palette .sp-thumb-el {
