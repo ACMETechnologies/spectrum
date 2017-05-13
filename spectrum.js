@@ -152,7 +152,8 @@
                     .html()
                 );
             }
-        }
+        }        
+
         return "<div class='sp-cf " + className + "'>" + html.join('') + "</div>";
     }
 
@@ -482,10 +483,6 @@
             paletteContainer.on(paletteEvent, ".sp-thumb-el", paletteElementClick);
             initialColorContainer.on(paletteEvent, ".sp-thumb-el:nth-child(1)", { ignore: true }, paletteElementClick);
 
-            if (typeof(opts.paletteHeading) === 'string' && 
-                opts.paletteHeading.length) {
-                paletteContainer.prepend('<p class="sp-palette-heading" role="heading">' + opts.paletteHeading + '</p>');
-            }
             if (typeof(opts.pickerHeading) === 'string' && 
                 opts.pickerHeading.length) {
                 pickerContainer.prepend('<p class="sp-picker-heading" role="heading">' + opts.pickerHeading + '</p>');
@@ -563,7 +560,12 @@
                 html.push(paletteTemplate(getUniqueSelectionPalette(), currentColor, "sp-palette-row sp-palette-row-selection", opts));
             }
 
-            paletteContainer.html(html.join(""));
+            var heading = '';
+            if (typeof(opts.paletteHeading) === 'string' && 
+                opts.paletteHeading.length) {
+                heading = '<p class="sp-palette-heading" role="heading">' + opts.paletteHeading + '</p>';
+            }
+            paletteContainer.html(heading + html.join(""));
         }
 
         function drawInitial() {
