@@ -652,6 +652,8 @@
             drawInitial();
             callbacks.show(colorOnShow);
             boundElement.trigger('show.spectrum', [ colorOnShow ]);
+
+            container.find('.sp-input').first().focus();
         }
 
         function onkeydown(e) {
@@ -692,6 +694,7 @@
 
             callbacks.hide(get());
             boundElement.trigger('hide.spectrum', [ get() ]);
+            replacer.focus();
         }
 
         function revert() {
