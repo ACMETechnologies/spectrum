@@ -424,6 +424,41 @@ test ("containerClassName", function() {
   el.spectrum("destroy").remove();
 });
 
+
+test ("paletteHeading", function() {
+  var h = "My Colours",
+      el = $("<input value='red' />").spectrum({
+        paletteHeading: h,
+        showPaletteOnly: true
+      });
+  var spectrum = el.spectrum("container").show(),
+      palette = spectrum.find(".sp-palette-container");
+
+  equal(palette.find(".sp-palette-heading").html(), h, "Heading set: " + h);
+  // Toggle and verify
+  el.spectrum("container").hide();
+  el.spectrum("container").show();
+  equal(palette.find(".sp-palette-heading").html(), h, "Heading set: " + h);
+
+  el.spectrum("destroy");
+
+});
+
+
+test ("pickerHeading", function() {
+  var h = "Custom Colors",
+      el = $("<input value='red' />").spectrum({
+        pickerHeading: h
+      });
+  var spectrum = el.spectrum("container").show(),
+      palette = spectrum.find(".sp-picker-container");
+
+  equal(palette.find(".sp-picker-heading").html(), h, "Heading set: " + h);
+  el.spectrum("destroy");
+
+});
+
+
 test( "Options Can Be Set and Gotten Programmatically", function() {
 
   var spec = $("<input id='spec' />").spectrum({
@@ -730,7 +765,7 @@ test("The selectedPalette should be updated in each spectrum instance, when stor
 
   secondEl.spectrum("toggle");
 
-  var selectedColor = secondEl.spectrum("container").find('span[data-color="' + colorToChoose + '"]');
+  var selectedColor = secondEl.spectrum("container").find('a[data-color="' + colorToChoose + '"]');
   ok(selectedColor.length > 0, "Selected color is also shown in the others instance's palette.");
 
   delete window.localStorage["spectrum.tests"];

@@ -49,6 +49,8 @@
         togglePaletteLessText: "less",
         clearText: "Clear Color Selection",
         noColorSelectedText: "No Color Selected",
+        paletteHeading: "",
+        pickerHeading:"",
         preferredFormat: false,
         className: "", // Deprecated - use containerClassName and replacerClassName instead.
         containerClassName: "",
@@ -140,11 +142,11 @@
                 c += (tinycolor.equals(color, current)) ? " sp-thumb-active" : "";
                 var formattedString = tiny.toString(opts.preferredFormat || "rgb");
                 var swatchStyle = rgbaSupport ? ("background-color:" + tiny.toRgbString()) : "filter:" + tiny.toFilter();
-                html.push('<span title="' + formattedString + '" data-color="' + tiny.toRgbString() + '" class="' + c + '"><span class="sp-thumb-inner" style="' + swatchStyle + ';" /></span>');
+                html.push('<a href="javascript:void(0);" title="' + formattedString + '" data-color="' + tiny.toRgbString() + '" class="' + c + '"><span class="sp-thumb-inner" style="' + swatchStyle + ';" /></a>');
             } else {
                 var cls = 'sp-clear-display';
                 html.push($('<div />')
-                    .append($('<span data-color="" style="background-color:transparent;" class="' + cls + '"></span>')
+                    .append($('<a href="javascript:void(0);" data-color="" style="background-color:transparent;" class="' + cls + '"></a>')
                         .attr('title', opts.noColorSelectedText)
                     )
                     .html()
@@ -479,6 +481,15 @@
             var paletteEvent = IE ? "mousedown.spectrum" : "click.spectrum touchstart.spectrum";
             paletteContainer.on(paletteEvent, ".sp-thumb-el", paletteElementClick);
             initialColorContainer.on(paletteEvent, ".sp-thumb-el:nth-child(1)", { ignore: true }, paletteElementClick);
+
+            if (typeof(opts.paletteHeading) === 'string' && 
+                opts.paletteHeading.length) {
+                paletteContainer.prepend('<p class="sp-palette-heading" role="heading">' + opts.paletteHeading + '</p>');
+            }
+            if (typeof(opts.pickerHeading) === 'string' && 
+                opts.pickerHeading.length) {
+                pickerContainer.prepend('<p class="sp-picker-heading" role="heading">' + opts.pickerHeading + '</p>');
+            }
         }
 
         function updateSelectionPaletteFromStorage() {

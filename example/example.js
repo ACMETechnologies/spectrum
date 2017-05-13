@@ -29,6 +29,8 @@ $(function() {
         showSelectionPalette: true,
         maxPaletteSize: 10,
         preferredFormat: "hex",
+        paletteHeading: "My colors",
+        pickerHeading: "Custom",
         localStorageKey: "spectrum.example",
         move: function (color) {
         },
@@ -241,7 +243,8 @@ $(function() {
       preferredFormat: "rgb",
       showPalette: true,
       showPaletteOnly: true,
-      palette: palettes[i]
+      palette: palettes[i],
+      paletteHeading: "My colors"
     });
   }
 });
