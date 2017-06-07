@@ -94,7 +94,7 @@
 
         return [
             "<div class='sp-container sp-hidden'>",
-                "<div class='sp-title-container'></div>"
+                "<div class='sp-title-container'></div>",
                 "<div class='sp-palette-container'>",
                     "<div class='sp-palette sp-thumb sp-cf'></div>",
                     "<div class='sp-palette-button-container sp-cf'>",
