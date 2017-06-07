@@ -94,7 +94,7 @@
 
         return [
             "<div class='sp-container sp-hidden'>",
-                "<div class='sp-title'></div>"
+                "<div class='sp-title-container'></div>"
                 "<div class='sp-palette-container'>",
                     "<div class='sp-palette sp-thumb sp-cf'></div>",
                     "<div class='sp-palette-button-container sp-cf'>",
@@ -216,6 +216,7 @@
             boundElement = $(element),
             disabled = false,
             container = $(markup, doc).addClass(theme),
+            titleContainer = container.find(".sp-title-container"),
             pickerContainer = container.find(".sp-picker-container"),
             dragger = container.find(".sp-color"),
             dragHelper = container.find(".sp-dragger"),
@@ -487,7 +488,7 @@
 
             if (typeof(opts.titleText) === 'string' &&
                 opts.titleText.length) {
-                pickerContainer.prepend('<p class="sp-title-text" role="heading">' + opts.titleText + '</p>');
+                titleContainer.prepend('<p class="sp-title-text" role="heading">' + opts.titleText + '</p>');
             }
 
             if (typeof(opts.pickerHeading) === 'string' && 
