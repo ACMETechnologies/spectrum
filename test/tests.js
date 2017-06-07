@@ -424,6 +424,18 @@ test ("containerClassName", function() {
   el.spectrum("destroy").remove();
 });
 
+test ("titleText", function() {
+  var h = "Pick a color, any color",
+      el = $("<input value='red' />").spectrum({
+        titleText: h
+      });
+  var spectrum = el.spectrum("container").show(),
+      palette = spectrum.find(".sp-title-container");
+
+  equal(palette.find(".sp-title-text").html(), h, "Heading set: " + h);
+  el.spectrum("destroy");
+
+});
 
 test ("paletteHeading", function() {
   var h = "My Colours",
