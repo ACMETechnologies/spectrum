@@ -49,6 +49,7 @@
         togglePaletteLessText: "less",
         clearText: "Clear Color Selection",
         noColorSelectedText: "No Color Selected",
+        titleText: "",
         paletteHeading: "",
         pickerHeading:"",
         preferredFormat: false,
@@ -93,6 +94,7 @@
 
         return [
             "<div class='sp-container sp-hidden'>",
+                "<div class='sp-title'></div>"
                 "<div class='sp-palette-container'>",
                     "<div class='sp-palette sp-thumb sp-cf'></div>",
                     "<div class='sp-palette-button-container sp-cf'>",
@@ -482,6 +484,11 @@
             var paletteEvent = IE ? "mousedown.spectrum" : "click.spectrum touchstart.spectrum";
             paletteContainer.on(paletteEvent, ".sp-thumb-el", paletteElementClick);
             initialColorContainer.on(paletteEvent, ".sp-thumb-el:nth-child(1)", { ignore: true }, paletteElementClick);
+
+            if (typeof(opts.titleText) === 'string' &&
+                opts.titleText.length) {
+                pickerContainer.prepend('<p class="sp-title-text" role="heading">' + opts.titleText + '</p>');
+            }
 
             if (typeof(opts.pickerHeading) === 'string' && 
                 opts.pickerHeading.length) {
